@@ -1,38 +1,19 @@
 <rg-tab>
 
-	<div class="tab { active: active, disabled: opts.disabled }">
-		<div class="header" onclick="{ activate }">
-			<h4>{ opts.heading }</h4>
-		</div>
-
-		<div class="body" show="{ active }">
-			<yield/>
-		</div>
+	<div show="{ active }" class="tab">
+		<yield/>
 	</div>
 
 	<script>
 		var _this = this;
 		_this.active = opts.active;
-
-		_this.activate = function () {
-			if (!opts.disabled) {
-				_this.trigger('tab:selected');
-			}
-		};
+		_this.disabled = opts.disabled;
 	</script>
 
-	<style scoped>
+	<style>
 
-		.tab .header {
-			cursor: pointer;
-		}
-
-		.tab.active {
-			color: green;
-		}
-
-		.tab.disabled {
-			color: grey;
+		.tab {
+			padding: 20px;
 		}
 
 	</style>
