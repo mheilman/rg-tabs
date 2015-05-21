@@ -36,4 +36,6 @@ Add this to your Riot app markup
 
 There is no additional JavaScript required.
 
-If you add `active="true"`
+If you add `active="true"` to more than 1 tab only the first tab will honor the request.
+
+`disabled` tabs can't be clicked on.
