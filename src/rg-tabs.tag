@@ -58,10 +58,14 @@
 		}
 
 		.headers {
+			display: -webkit-flex;
+			display: -ms-flexbox;
 			display: flex;
 		}
 
 		.header {
+			-webkit-flex: 1;
+			-ms-flex: 1;
 			flex: 1;
 			box-sizing: border-box;
 			text-align: center;
