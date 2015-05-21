@@ -1,0 +1,39 @@
+{
+  "name": "rg-tabs",
+  "version": "0.1.0",
+  "description": "Tabs component",
+  "main": "dist/rg-tabs.min.js",
+  "scripts": {
+    "lint": "jshint . --exclude-path=.gitignore",
+    "riot": "riot src dist/rg-tabs.js",
+    "postriot": "riot demo",
+    "uglify": "uglifyjs --output dist/rg-tabs.min.js -- dist/rg-tabs.js",
+    "build": "npm run riot && npm run uglify",
+    "test": "istanbul cover -- _mocha --timeout=10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RiotGear/rg-tabs.git"
+  },
+  "keywords": [
+    "riotjs",
+    "riot",
+    "component",
+    "tabs"
+  ],
+  "author": "Gregory Pratt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RiotGear/rg-tabs/issues"
+  },
+  "homepage": "https://github.com/RiotGear/rg-tabs",
+  "devDependencies": {
+    "babel": "~5.4.3",
+    "chai": "~2.2.0",
+    "istanbul": "~0.3.13",
+    "jshint": "~2.7.0",
+    "mocha": "~2.2.4",
+    "riot": "~2.0.15",
+    "uglify-js": "~2.4.21"
+  }
+}
