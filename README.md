@@ -11,7 +11,7 @@
 Add this to your Riot app markup
 
 ```html
-<rg-tabs>
+<rg-tabs onopen="{ tabOpened }">
 	<rg-tab heading="Tab 1">
 		Tab one
 	</rg-tab>
@@ -34,7 +34,14 @@ Add this to your Riot app markup
 </rg-tabs>
 ```
 
-There is no additional JavaScript required.
+There is no additional JavaScript required to have working 
+tabs however if you want to handle open tab events add the following:
+
+```javascript
+this.tabOpened = function (tab) {
+	console.log(tab.index); // the index of the active tab
+};
+```
 
 If you add `active="true"` to more than 1 tab only the first tab will honor the request.
 

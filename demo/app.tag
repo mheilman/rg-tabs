@@ -1,6 +1,6 @@
 <demo-app>
 
-	<rg-tabs>
+	<rg-tabs onopen="{ tabOpened }">
 		<rg-tab heading="Tab 1">
 			Tab one
 		</rg-tab>
@@ -21,5 +21,12 @@
 			Tab five
 		</rg-tab>
 	</rg-tabs>
+
+	<script>
+		var _this = this;
+		_this.tabOpened = function (tab) {
+			console.log(tab);
+		};
+	</script>
 
 </demo-app>

@@ -21,9 +21,11 @@
 		});
 
 		// Deactivate all tabs and active selected one
-		_this.tags['rg-tab'].forEach(function (tab) {
+		_this.tags['rg-tab'].forEach(function (tab, i) {
+			tab.index = i;
 			tab.on('tab:selected', function () {
 				deselectTabs();
+				opts.onopen(tab);
 				tab.active = true;
 				_this.update();
 			});
