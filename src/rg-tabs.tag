@@ -13,6 +13,7 @@
 
 	<script>
 		var _this = this;
+		_this.onopen = opts.onopen;
 		_this.tabs = _this.tags['rg-tab'];
 
 		// Give each tab an index
@@ -38,8 +39,8 @@
 			tab = tab.item;
 			if (!tab.disabled) {
 				deselectTabs();
-				if (opts.onopen) {
-					opts.onopen(tab);
+				if (_this.onopen) {
+					_this.onopen(tab);
 				}
 				tab.active = true;
 				_this.update();
