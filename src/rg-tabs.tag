@@ -3,7 +3,7 @@
 	<div class="tabs">
 		<div class="headers">
 			<div each="{ tabs }" class="header { active: active, disabled: disabled }" onclick="{ parent.activate }">
-				<h4>{ opts.heading }</h4>
+				<h4 class="heading">{ opts.heading }</h4>
 			</div>
 		</div>
 
@@ -38,7 +38,9 @@
 			tab = tab.item;
 			if (!tab.disabled) {
 				deselectTabs();
-				opts.onopen(tab);
+				if (opts.onopen) {
+					opts.onopen(tab);
+				}
 				tab.active = true;
 				_this.update();
 			}
@@ -70,16 +72,24 @@
 			box-sizing: border-box;
 			text-align: center;
 			cursor: pointer;
-			box-shadow: 0 -1px 0 0 #6495ED inset;
+			box-shadow: 0 -1px 0 0 #404040 inset;
+		}
+
+		.heading {
+			padding: 10px;
+			margin: 0;
 		}
 
 		.header.active {
-			background-color: #6495ED;
+			background-color: #404040;
+		}
+
+		.header.active .heading {
 			color: white;
 		}
 
-		.header.disabled {
-			color: grey;
+		.header.disabled .heading {
+			color: #888;
 		}
 
 	</style>
