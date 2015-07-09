@@ -43,7 +43,6 @@
 					_this.onopen(tab);
 				}
 				tab.active = true;
-				_this.update();
 			}
 		};
 
