@@ -2,8 +2,8 @@
 
 	<div class="tabs">
 		<div class="headers">
-			<div each="{ tabs }" class="header { active: active, disabled: disabled }" onclick="{ parent.activate }">
-				<h4 class="heading">{ opts.heading }</h4>
+			<div each="{ tab in tabs }" class="header { active: tab.active, disabled: tab.disabled }" onclick="{ activate }">
+				<h4 class="heading">{ tab.opts.heading }</h4>
 			</div>
 		</div>
 
@@ -16,15 +16,12 @@
 		_this.onopen = opts.onopen;
 		_this.tabs = _this.tags['rg-tab'];
 
-		// Give each tab an index
-		_this.tabs.forEach(function (tab, i) {
-			tab.index = i;
-		});
-
 		// If more than one tab set to active honor the first one
 		_this.on('mount', function () {
 			var activeTab = false;
-			_this.tabs.forEach(function (tab) {
+			_this.tabs.forEach(function (tab, i) {
+				// Give each tab an index
+				tab.index = i;
 				if (activeTab) {
 					tab.active = false;
 				}
@@ -35,8 +32,8 @@
 		});
 
 		// Deactivate all tabs and active selected one
-		_this.activate = function (tab) {
-			tab = tab.item;
+		_this.activate = function (e) {
+			tab = e.item.tab;
 			if (!tab.disabled) {
 				deselectTabs();
 				if (_this.onopen) {
