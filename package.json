@@ -1,6 +1,6 @@
 {
   "name": "riotgear-tabs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tabs component",
   "main": "dist/rg-tabs.min.js",
   "scripts": {
