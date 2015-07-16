@@ -6,7 +6,7 @@
 				<h4 class="heading" if="{ tab.opts.heading && !tab.heading }">{ tab.opts.heading }</h4>
 
 				<div class="heading" if="{ tab.heading }">
-					<raw content="{ tab.heading }"></raw>
+					<rg-tag-heading-raw content="{ tab.heading }"></rg-tag-heading-raw>
 				</div>
 			</div>
 		</div>
