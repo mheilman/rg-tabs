@@ -6,8 +6,11 @@ Add this to your Riot app markup
 
 ```html
 <rg-tabs onopen="{ tabOpened }">
-	<rg-tab heading="Tab 1">
-		Tab one
+	<rg-tab>
+		<rg-tab-heading>
+			Tab <em>One</em>
+		</rg-tab-heading>
+		First tab content
 	</rg-tab>
 
 	<rg-tab heading="Tab 2" active="true">
@@ -36,6 +39,9 @@ this.tabOpened = function (tab) {
 	console.log(tab.index); // the index of the active tab
 };
 ```
+
+You can set the tab heading text either by setting the `heading` attribute or you can use the 
+`rg-tab-heading` child tag. Use the attribute to set text and the tag to set HTML content.
 
 If you add `active="true"` to more than 1 tab only the first tab will honor the request.
 
