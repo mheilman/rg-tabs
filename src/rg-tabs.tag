@@ -3,7 +3,11 @@
 	<div class="tabs">
 		<div class="headers">
 			<div each="{ tab in tabs }" class="header { active: tab.active, disabled: tab.disabled }" onclick="{ activate }">
-				<h4 class="heading">{ tab.opts.heading }</h4>
+				<h4 class="heading" if="{ tab.opts.heading && !tab.heading }">{ tab.opts.heading }</h4>
+
+				<div class="heading" if="{ tab.heading }">
+					<raw content="{ tab.heading }"></raw>
+				</div>
 			</div>
 		</div>
 
@@ -22,6 +26,13 @@
 			_this.tabs.forEach(function (tab, i) {
 				// Give each tab an index
 				tab.index = i;
+
+				var tabHeading = tab.tags['rg-tab-heading'];
+				if (tabHeading) {
+					if (Object.prototype.toString.call(tabHeading) !== '[object Array]')
+						tab.heading = tabHeading.root.innerHTML;
+				}
+
 				if (activeTab) {
 					tab.active = false;
 				}
@@ -29,6 +40,7 @@
 					activeTab = true;
 				}
 			});
+			_this.update();
 		});
 
 		// Deactivate all tabs and active selected one
