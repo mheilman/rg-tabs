@@ -2,7 +2,8 @@
 
 	<rg-tabs onopen="{ tabOpened }">
 		<rg-tab heading="Tab 1">
-			Tab one
+			<rg-tab-heading>Tab <em>One</em></rg-tab-heading>
+			The first tab content
 		</rg-tab>
 
 		<rg-tab heading="Tab 2" active="true">
