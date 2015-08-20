@@ -16,49 +16,37 @@
 	</div>
 
 	<script>
-		var _this = this;
-		_this.onopen = opts.onopen;
-		_this.tabs = _this.tags['rg-tab'];
+		this.onopen = opts.onopen
+		this.tabs = this.tags['rg-tab']
+		var deselectTabs = () => this.tabs.forEach(tab => tab.active = false)
 
 		// If more than one tab set to active honor the first one
-		_this.on('mount', function () {
-			var activeTab = false;
-			_this.tabs.forEach(function (tab, i) {
+		this.on('mount', () => {
+			let activeTab = false
+			this.tabs.forEach((tab, i) => {
 				// Give each tab an index
-				tab.index = i;
+				tab.index = i
 
-				var tabHeading = tab.tags['rg-tab-heading'];
+				let tabHeading = tab.tags['rg-tab-heading']
 				if (tabHeading) {
 					if (Object.prototype.toString.call(tabHeading) !== '[object Array]')
-						tab.heading = tabHeading.root.innerHTML;
+						tab.heading = tabHeading.root.innerHTML
 				}
 
-				if (activeTab) {
-					tab.active = false;
-				}
-				if (tab.active) {
-					activeTab = true;
-				}
-			});
-			_this.update();
-		});
+				if (activeTab) tab.active = false
+				if (tab.active) activeTab = true
+			})
+			this.update()
+		})
 
 		// Deactivate all tabs and active selected one
-		_this.activate = function (e) {
-			tab = e.item.tab;
+		this.activate = e => {
+			tab = e.item.tab
 			if (!tab.disabled) {
-				deselectTabs();
-				if (_this.onopen) {
-					_this.onopen(tab);
-				}
-				tab.active = true;
+				deselectTabs()
+				if (this.onopen) this.onopen(tab)
+				tab.active = true
 			}
-		};
-
-		function deselectTabs() {
-			_this.tabs.forEach(function (tab) {
-				tab.active = false;
-			});
 		}
 	</script>
 

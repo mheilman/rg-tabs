@@ -27,10 +27,7 @@
 	</rg-tabs>
 
 	<script>
-		var _this = this;
-		_this.tabOpened = function (tab) {
-			console.log(tab);
-		};
+		this.tabOpened = (tab) => console.log(tab)
 	</script>
 
 </demo-app>

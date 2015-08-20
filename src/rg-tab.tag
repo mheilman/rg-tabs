@@ -5,9 +5,8 @@
 	</div>
 
 	<script>
-		var _this = this;
-		_this.active = opts.active;
-		_this.disabled = opts.disabled;
+		this.active = opts.active;
+		this.disabled = opts.disabled;
 	</script>
 
 	<style>
