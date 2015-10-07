@@ -18,7 +18,17 @@
 	<script>
 		this.onopen = opts.onopen
 		this.tabs = this.tags['rg-tab']
-		var deselectTabs = () => this.tabs.forEach(tab => tab.active = false)
+		var deselectTabs = () => {
+			let headers = this.root.querySelectorAll(".tabs .headers .header")
+			this.tabs.forEach(tab => {
+				let wasActive = tab.active
+				tab.active = false
+				if (wasActive) {
+					headers[tab.index].classList.remove("active")
+					tab.update()
+				}
+			})
+		}
 
 		// If more than one tab set to active honor the first one
 		this.on('mount', () => {
@@ -41,11 +51,16 @@
 
 		// Deactivate all tabs and active selected one
 		this.activate = e => {
+			e.preventUpdate = true
 			tab = e.item.tab
+
 			if (!tab.disabled) {
 				deselectTabs()
 				if (this.onopen) this.onopen(tab)
 				tab.active = true
+				let headers = this.root.querySelectorAll(".tabs .headers .header")
+				headers[tab.index].classList.add("active")
+				tab.update()
 			}
 		}
 	</script>
